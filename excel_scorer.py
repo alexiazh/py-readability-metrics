@@ -37,8 +37,8 @@ def process_single_file(input_file, output_file):
     df.to_excel(output_file, index=False)
 
 
-input_folder = 'readability_eval/'
-output_folder = 'readability_eval_results/'
+input_folder = 'Readability_Standard_Symbol/'
+output_folder = 'Readability_Standard_Symbol_Results/'
 
 if not os.path.exists(output_folder):
     os.makedirs(output_folder)
@@ -56,15 +56,15 @@ for dirpath, dirnames, filenames in os.walk(input_folder):
             input_file = os.path.join(dirpath, file_name)
             # input_file_base = os.path.splitext(os.path.basename(input_file))[0]
             # output_file = os.path.join(output_folder, f'{input_file_base}_readability.xlsx')
-            output_file_name = file_name.replace('_Empty', '')
-
+            
             relative_path = os.path.relpath(dirpath, input_folder)
             output_dir = os.path.join(output_folder, relative_path)
 
             if not os.path.exists(output_dir):
                 os.makedirs(output_dir)
-
-            output_file = os.path.join(output_dir, output_file_name)
+            
+            # output_file_name = file_name.replace('_Empty', '')
+            output_file = os.path.join(output_dir, file_name)
 
             print(f"Processing {input_file}...")
 
